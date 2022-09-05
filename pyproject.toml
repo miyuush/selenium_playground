@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "selenium-playground"
+version = "0.1.0"
+description = ""
+license = "MIT"
+authors = ["miyuush <shiyuroad57@gmail.com>"]
+readme = "README.md"
+packages = [{include = "selenium_playground"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selenium = "^4.4.3"
+chromedriver-binary = ">=105.0.0,<106.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
