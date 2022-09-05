@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
  && rm -rf /var/lib/apt/lists/*
 
-USER vscode
+# Install starship
+RUN curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
-WORKDIR /src
+USER vscode
