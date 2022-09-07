@@ -38,7 +38,7 @@ RUN cd /usr/local/bin && ln -fs idle3 idle && ln -fs pydoc3 pydoc && ln -fs pyth
 RUN curl -kL https://bootstrap.pypa.io/get-pip.py | python
 
 # Install Poetry
-COPY pyproject.toml poetry.lock ./
+COPY ./pyproject.toml ./poetry.lock ./
 ENV POETRY_HOME="/opt/poetry"
 ENV PATH="$POETRY_HOME/bin:$PATH"
 RUN curl -sSL https://install.python-poetry.org | python && \
