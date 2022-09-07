@@ -16,7 +16,7 @@ jobs:
       - uses: hadolint/hadolint-action@v2.0.0
         with:
           dockerfile: ./Dockerfile
-          ignore: "DL3008,DL4006"
+          ignore: "DL3003,DL3008,DL4006"
 
   dockle:
     runs-on: ubuntu-latest
