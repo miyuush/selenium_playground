@@ -1,7 +1,7 @@
 {
     "name": "Ubuntu",
     "dockerComposeFile": [
-        "docker-compose.yaml"
+        "../docker-compose.yaml"
     ],
     "service": "app",
     // "build": {
@@ -13,7 +13,7 @@
     //     }
     // },
     "workspaceFolder": "/app",
-    "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+    // "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
     "settings": {
         "editor.formatOnType": true,
         "editor.formatOnPaste": true,
