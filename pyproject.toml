@@ -11,6 +11,7 @@ packages = [{include = "selenium_playground"}]
 python = "^3.10"
 selenium = "^4.4.3"
 chromedriver-binary = ">=105.0.0,<106.0.0"
+black = "^22.8.0"
 
 
 [build-system]
