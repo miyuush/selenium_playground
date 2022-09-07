@@ -17,37 +17,3 @@ jobs:
         with:
           dockerfile: ./Dockerfile
           ignore: "DL3003,DL3008,DL4006"
-
-  dockle:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: docker/setup-buildx-action@v2
-
-      # See: https://github.com/docker/build-push-action/blob/master/docs/advanced/cache.md#local-cache
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-      - name: Only docker build
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          load: true
-          tags: ${{ env.BASE_TAG }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-
-      - name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-      - uses: hands-lab/dockle-action@v1
-        with:
-          image: ${{ env.BASE_TAG }}
-          exit-code: '1'
-          exit-level: WARN

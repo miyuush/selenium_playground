@@ -1,3 +1,0 @@
-# Ignore the following because it can't be helped.
-# Suspicious filename found : usr/local/lib/python3.10/site-packages/isort/settings.py (You can suppress it with "-af settings.py")
-CIS-DI-0010
