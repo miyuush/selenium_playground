@@ -37,14 +37,14 @@ RUN curl -Lo python.tgz "https://www.python.org/ftp/python/${PYTHON_VERSION}/Pyt
 RUN cd /usr/local/bin && ln -fs idle3 idle && ln -fs pydoc3 pydoc && ln -fs python3.10 python && ln -fs python3.10-config python-config
 RUN curl -kL https://bootstrap.pypa.io/get-pip.py | python
 
+WORKDIR /app
+
 # Install Poetry
-COPY ./pyproject.toml ./poetry.lock ./
+COPY pyproject.toml poetry.lock ./
 ENV POETRY_HOME="/opt/poetry"
 ENV PATH="$POETRY_HOME/bin:$PATH"
 RUN curl -sSL https://install.python-poetry.org | python && \
     poetry config virtualenvs.create false && \
     poetry install --no-root
-
-WORKDIR /app
 
 USER vscode
