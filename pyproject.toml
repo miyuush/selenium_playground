@@ -10,10 +10,10 @@ packages = [{include = "selenium_playground"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 selenium = "^4.4.3"
-chromedriver-binary = ">=105.0.0,<106.0.0"
 black = "^22.8.0"
 isort = "^5.10.1"
 flake8 = "^5.0.4"
+slack-sdk = "^3.18.3"
 
 [tool.isort]
 profile = "black"
