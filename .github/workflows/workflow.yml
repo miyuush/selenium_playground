@@ -18,7 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt install -y make
+          apt update && apt-get install -y make
           python -m pip install --upgrade pip
           pip install black flake8 isort
 
