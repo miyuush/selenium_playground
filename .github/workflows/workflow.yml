@@ -20,7 +20,7 @@ jobs:
         run: |
           apt update && apt-get install -y make
           python -m pip install --upgrade pip
-          pip install black flake8 isort
+          pip install black flake8 isort mypy
 
       - name: Lint
         run: |

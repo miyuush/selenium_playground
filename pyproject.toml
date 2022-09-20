@@ -14,10 +14,14 @@ black = "^22.8.0"
 isort = "^5.10.1"
 flake8 = "^5.0.4"
 slack-sdk = "^3.18.3"
+mypy = "^0.971"
 
 [tool.isort]
 profile = "black"
 line_length = 99
+
+[tool.mypy]
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core"]

@@ -10,11 +10,13 @@ install:
 .PHONY: lint
 lint:
 	poetry run flake8 --extend-ignore F401 .
+	poetry run mypy .
 	poetry run isort --check --diff .
 	poetry run black --check --diff --line-length 99 .
 
 .PHONY: ci-lint
 ci-lint:
 	flake8 --extend-ignore F401 .
+	mypy .
 	isort --check --diff .
 	black --check --diff --line-length 99 .

@@ -1,30 +1,54 @@
 {
-    "name": "Ubuntu",
-    "dockerComposeFile": [
-        "../docker-compose.yaml"
-    ],
-    "service": "app",
-    "workspaceFolder": "/app",
-    "settings": {
-        "editor.formatOnType": true,
-        "editor.formatOnPaste": true,
-        "editor.rulers": [
-            80,
-            120
-        ]
+  "name": "Ubuntu",
+  "dockerComposeFile": [
+    "../docker-compose.yaml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "settings": {
+    "files.exclude": {
+      "**/.mypy_cache": true,
+      "**/__pycache__": true
     },
-    "extensions": [
-        "streetsidesoftware.code-spell-checker",
-        "oderwat.indent-rainbow",
-        "mechatroner.rainbow-csv",
-        "shardulm94.trailing-spaces",
-        "vscode-icons-team.vscode-icons",
-        "editorconfig.editorconfig",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "njpwerner.autodocstring"
+    "editor.rulers": [100, 120],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+      "--line-length=99"
     ],
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
-    "remoteUser": "vscode"
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+      "--extend-ignore=F401"
+    ],
+    "python.linting.mypyEnabled": true,
+    "[python]": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+      }
+    },
+    "[JSON]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "[YAML]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    }
+  },
+  "extensions": [
+    "streetsidesoftware.code-spell-checker",
+    "oderwat.indent-rainbow",
+    "mechatroner.rainbow-csv",
+    "shardulm94.trailing-spaces",
+    "vscode-icons-team.vscode-icons",
+    "editorconfig.editorconfig",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "njpwerner.autodocstring",
+    "esbenp.prettier-vscode"
+  ],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  "remoteUser": "vscode"
 }
