@@ -4,16 +4,24 @@ on:
   push:
     branches: [ main ]
 
-env:
-  BASE_TAG: base:1.0.0
-
 jobs:
-  hadolint:
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - uses: hadolint/hadolint-action@v2.0.0
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
         with:
-          dockerfile: ./Dockerfile
-          ignore: "DL3003,DL3008,DL4006"
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          apt install -y make
+          python -m pip install --upgrade pip
+          pip install black flake8 isort
+
+      - name: Lint
+        run: |
+          make lint
