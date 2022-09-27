@@ -15,6 +15,7 @@ isort = "^5.10.1"
 flake8 = "^5.0.4"
 slack-sdk = "^3.18.3"
 mypy = "^0.971"
+jsonschema = "^4.16.0"
 
 [tool.isort]
 profile = "black"
