@@ -1,56 +1,44 @@
-import re
-
-
-class Name:
-    def __init__(self, value):
-        self.value = value
+from typing import Final
 
 
 class CurrentPrice:
-    def __init__(self, current_price):
-        self.value = current_price
+    """Deals with current product prices."""
 
-    def fmt(self):
-        trimmed = self.__trim_comma()
-        return trimmed.__to_int()
+    def __init__(self, value: int) -> None:
+        """
+        Args:
+            value (int): Current product price.
+        """
+        self.value: int = value
 
-    def __trim_comma(self):
-        return CurrentPrice(self.value.replace(",", ""))
+    def is_cheap(self, asking_price: int) -> bool:
+        """Determine if the current product price is lower than the asking price.
 
-    def __to_int(self):
-        return CurrentPrice(int(self.value))
+        Args:
+            asking_price (int): Price to buy at this price.
 
-
-class Price:
-    def __init__(self, current_price, asking_price):
-        self.current_price = current_price
-        self.asking_price = asking_price
-
-    def should_buy(self):
-        return self.current_price.value < self.asking_price
+        Returns:
+            bool: If the price is lower than the asking price, True.
+        """
+        return self.value < asking_price
 
 
-class Inventory:
-    large_inventory = "在庫あり。"
+class CurrentInventory:
+    """Deals with current product inventory."""
 
-    def __init__(self, value):
-        self.value = value
+    NO_INVENTORY: Final[int] = 0
 
-    def fmt(self):
-        if self.__is_few():
-            return Inventory(100)
+    def __init__(self, value: int) -> None:
+        """
+        Args:
+            value (int): Current product inventory.
+        """
+        self.value: int = value
 
-        trimmed = self.__trim_description()
-        return trimmed.__to_int()
+    def is_inventory(self) -> bool:
+        """Determine if product is in stock.
 
-    def __is_few(self):
-        return self.value == Inventory.large_inventory
-
-    def __trim_description(self):
-        return Inventory(re.sub("[^0-9]", "", self.value))
-
-    def __to_int(self):
-        return Inventory(int(self.value))
-
-    def can_buy(self):
-        return self.value > 0
+        Returns:
+            bool: True if in stock.
+        """
+        return self.value > self.NO_INVENTORY

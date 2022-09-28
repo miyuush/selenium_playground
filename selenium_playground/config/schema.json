@@ -1,0 +1,58 @@
+{
+  "title": "欲しい物リスト",
+  "description": "欲しい物の中で価格が下がったら買いたい物",
+  "type": "object",
+  "properties": {
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "商品のURL"
+          },
+          "asking_price": {
+            "type": "integer",
+            "description": "希望価格"
+          },
+          "elem_name": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "商品名のHTML要素のID"
+              }
+            }
+          },
+          "elem_price": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "商品の価格のHTML要素のID"
+              },
+              "class": {
+                "type": "string",
+                "description": "商品の価格のHTML要素のクラス"
+              }
+            }
+          },
+          "elem_inventory": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "商品の在庫のHTML要素のID"
+              },
+              "class": {
+                "type": "string",
+                "description": "商品の在庫のHTML要素のクラス"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
